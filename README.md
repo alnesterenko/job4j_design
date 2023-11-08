@@ -1,5 +1,5 @@
-### This is a Junior level educational project.<br/>
-## Here are some topics that will be covered in the course:
+## This is a Junior level educational project.<br/>
+### Here are some topics that will be covered in the course:
 
 - 2.1.1. AssertJ
 - 2.1.2. Iterator
