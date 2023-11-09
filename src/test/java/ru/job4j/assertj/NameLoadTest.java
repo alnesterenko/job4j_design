@@ -13,7 +13,7 @@ class NameLoadTest {
     }
 
     @Test
-    void dontHaveСorrectSimbol() {
+    void dontHaveSimbol() {
         NameLoad nameLoad = new NameLoad();
         assertThatThrownBy(() -> nameLoad.parse(new String[]{"key:value"}))
                 .isInstanceOf(IllegalArgumentException.class)
