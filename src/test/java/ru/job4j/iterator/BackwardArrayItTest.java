@@ -49,4 +49,7 @@ class BackwardArrayItTest {
         assertThatThrownBy(iterator::next)
                 .isInstanceOf(NoSuchElementException.class);
     }
+
+    /* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл
+    * Потому что, я затупил и не переименовал коммит.*/
 }

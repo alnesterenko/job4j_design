@@ -24,4 +24,6 @@ public class BackwardArrayIt implements Iterator<Integer> {
         }
         return data[point--];
     }
+    /* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл
+     * Потому что, я затупил и не переименовал коммит.*/
 }
