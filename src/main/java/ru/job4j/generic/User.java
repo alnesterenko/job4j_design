@@ -13,3 +13,5 @@ public class User extends Base {
         return username;
     }
 }
+
+/* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл */

@@ -24,3 +24,5 @@ public class UserStore implements Store<User> {
         return store.findById(id);
     }
 }
+
+/* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл */

@@ -29,3 +29,5 @@ public final class MemStore<T extends Base> implements Store<T> {
         return storage.get(id);
     }
 }
+
+/* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл */

@@ -10,3 +10,5 @@ public interface Store<T extends Base> {
 
     T findById(String id);
 }
+
+/* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл */
