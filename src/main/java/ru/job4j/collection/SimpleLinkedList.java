@@ -27,11 +27,11 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
     @Override
     public E get(int index) {
         Objects.checkIndex(index, size);
-        Iterator<E> iterator = iterator();
+        Node<E> next = head;
         for (int i = 0; i < index; i++) {
-            iterator.next();
+            next = next.next;
         }
-        return iterator.next();
+        return next.item;
     }
 
     @Override
