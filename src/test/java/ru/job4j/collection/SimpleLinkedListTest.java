@@ -90,3 +90,4 @@ class SimpleLinkedListTest {
         assertThat(second.hasNext()).isFalse();
     }
 }
+/* Это специальный комментарий, чтобы можно было повторно закоммитить этот файл */
