@@ -4,8 +4,8 @@ import java.util.*;
 
 public class SimpleLinkedList<E> implements SimpleLinked<E> {
 
-    private int size;
-    private int modCount;
+    private int size = 0;
+    private int modCount = 0;
     private Node<E> head;
 
     @Override
@@ -55,7 +55,7 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (expectedModCount != modCount) {
                     throw  new ConcurrentModificationException();
                 }
-                return size != 0 && currentNode.next != null;
+                return head != null && currentNode.next != null;
             }
 
             @Override
