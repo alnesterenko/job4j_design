@@ -142,4 +142,15 @@ class ForwardLinkedTest {
         assertThat(second.next()).isEqualTo(2);
         assertThat(second.hasNext()).isFalse();
     }
+
+    @Test
+    void checkAddFirst() {
+        assertThat(list).containsExactly(1, 2);
+        list.addFirst(0);
+        assertThat(list).containsExactly(0, 1, 2);
+        assertThat(list).hasSize(3);
+        list.addFirst(50);
+        assertThat(list).containsExactly(50, 0, 1, 2);
+        assertThat(list).hasSize(4);
+    }
 }
