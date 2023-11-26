@@ -11,8 +11,8 @@ public class ForwardLinked<T> implements Iterable<T> {
     private Node<T> head;
 
     public void add(T value) {
-        ForwardLinked.Node<T> link = head;
-        final ForwardLinked.Node<T> newNode = new ForwardLinked.Node<T>(value, null);
+        Node<T> link = head;
+        Node<T> newNode = new Node<T>(value, null);
         if (head == null) {
             head = newNode;
         } else {
@@ -26,20 +26,18 @@ public class ForwardLinked<T> implements Iterable<T> {
     }
 
     public void addFirst(T value) {
-        final ForwardLinked.Node<T> newNode = new ForwardLinked.Node<T>(value, null);
-        if (head == null) {
-            head = newNode;
-        } else {
+        Node<T> newNode = new Node<T>(value, null);
+        if (head != null) {
             newNode.next = head;
-            head = newNode;
         }
+        head = newNode;
         size++;
         modCount++;
     }
 
     public T get(int index) {
         Objects.checkIndex(index, size);
-        ForwardLinked.Node<T> next = head;
+        Node<T> next = head;
         for (int i = 0; i < index; i++) {
             next = next.next;
         }
@@ -68,8 +66,8 @@ public class ForwardLinked<T> implements Iterable<T> {
 
             int expectedModCount = modCount;
 
-            ForwardLinked.Node<T> link;
-            ForwardLinked.Node<T> next = head;
+            Node<T> link;
+            Node<T> next = head;
 
             @Override
             public boolean hasNext() {
@@ -93,9 +91,9 @@ public class ForwardLinked<T> implements Iterable<T> {
 
     private static class Node<T> {
         private T item;
-        private ForwardLinked.Node<T> next;
+        private Node<T> next;
 
-        Node(T element, ForwardLinked.Node<T> next) {
+        Node(T element, Node<T> next) {
             this.item = element;
             this.next = next;
         }
