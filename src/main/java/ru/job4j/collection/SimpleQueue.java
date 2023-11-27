@@ -8,7 +8,7 @@ public class SimpleQueue<T> {
 
     private int size;
 
-    public T poll() {
+   /* public T poll() {
         if (size == 0) {
             throw new NoSuchElementException("Queue is empty");
         }
@@ -22,6 +22,19 @@ public class SimpleQueue<T> {
             in.push(out.pop());
         }
         return needToBeReturned;
+    }*/
+
+    public T poll() {
+        if (size == 0) {
+            throw new NoSuchElementException("Queue is empty");
+        }
+        if (out.pop() == null) {
+            for (int i = 0; i < size; i++) {
+                out.push(in.pop());
+            }
+        }
+        size--;
+        return out.pop();
     }
 
     public void push(T value) {
