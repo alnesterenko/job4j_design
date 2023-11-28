@@ -21,9 +21,8 @@ public class SimpleArraySet<T> implements SimpleSet<T> {
     @Override
     public boolean contains(T value) {
         boolean result = false;
-        Iterator<T> iterator = iterator();
-        while (iterator.hasNext()) {
-            if (Objects.equals(iterator.next(), value)) {
+        for (T oneElement : set) {
+            if (Objects.equals(oneElement, value)) {
                 result = true;
                 break;
             }
