@@ -136,3 +136,5 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         System.out.println(map.indexFor(8));
     }
 }
+
+/* Специальный комментарий, чтобы можно было повторно закоммитить этот файл */

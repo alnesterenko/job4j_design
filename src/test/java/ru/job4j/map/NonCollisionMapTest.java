@@ -151,3 +151,5 @@ class NonCollisionMapTest {
         assertThat(map.get(null)).isNull();
     }
 }
+
+/* Специальный комментарий, чтобы можно было повторно закоммитить этот файл */

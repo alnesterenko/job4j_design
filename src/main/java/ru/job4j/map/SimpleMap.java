@@ -5,3 +5,5 @@ public interface SimpleMap<K, V> extends Iterable<K> {
     V get(K key);
     boolean remove(K key);
 }
+
+/* Специальный комментарий, чтобы можно было повторно закоммитить этот файл */
