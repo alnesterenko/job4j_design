@@ -30,8 +30,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int hash(int hashCode) {
-        int h = Objects.hashCode(hashCode);
-        return h ^ (h >>> 16);
+        return hashCode ^ (hashCode >>> 16);
     }
 
     private int indexFor(int hash) {
@@ -41,7 +40,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     private void expand() {
         capacity *= 2;
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
-        for (MapEntry oneElement : table) {
+        for (MapEntry<K, V> oneElement : table) {
             if (oneElement != null) {
                 newTable[getNumberOfBasket(oneElement.key)] = oneElement;
             }
@@ -61,11 +60,10 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        boolean result = false;
         int basket = getNumberOfBasket(key);
-        if (checkBasketByNumber(key, basket)) {
+        boolean result = checkBasketByNumber(key, basket);
+        if (result) {
             table[basket] = null;
-            result = true;
             count--;
             modCount++;
         }
@@ -73,17 +71,15 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private int getNumberOfBasket(Object key) {
-        return key == null ? Objects.hashCode(key) : indexFor(hash(Objects.hashCode(key)));
+        return indexFor(hash(Objects.hashCode(key)));
     }
 
     private boolean checkBasketByNumber(K key, int basket) {
         boolean result = false;
         if (table[basket] != null) {
             K keyFromTable = table[basket].key;
-            if (Objects.hashCode(key) == Objects.hashCode(keyFromTable)
-                    && Objects.equals(key, keyFromTable)) {
-                result = true;
-            }
+                result = Objects.hashCode(key) == Objects.hashCode(keyFromTable)
+                        && Objects.equals(key, keyFromTable);
         }
         return result;
     }
