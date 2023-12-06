@@ -16,23 +16,22 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        if ((float) count / capacity >= LOAD_FACTOR) {
+        if (count >= LOAD_FACTOR * capacity) {
             expand();
         }
-        boolean result = false;
         int basket = getNumberOfBasket(key);
-        if (table[basket] == null) {
+        boolean result = table[basket] == null;
+        if (result) {
             table[basket] = new MapEntry<>(key, value);
             count++;
             modCount++;
-            result = true;
         }
         return result;
     }
 
     private int hash(int hashCode) {
         int h = Objects.hashCode(hashCode);
-        return (hashCode == 0) ? 0 : (h ^ (h >>> 16));
+        return h ^ (h >>> 16);
     }
 
     private int indexFor(int hash) {
@@ -44,7 +43,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
         for (MapEntry oneElement : table) {
             if (oneElement != null) {
-                newTable[getNumberOfBasket((K) oneElement.key)] = oneElement;
+                newTable[getNumberOfBasket(oneElement.key)] = oneElement;
             }
         }
         table = newTable;
@@ -73,12 +72,8 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         return result;
     }
 
-    private int getNumberOfBasket(K key) {
-        int hashCode = Objects.hashCode(key);
-        if (hashCode != 0) {
-            hashCode = indexFor(hash(hashCode));
-        }
-        return hashCode;
+    private int getNumberOfBasket(Object key) {
+        return key == null ? Objects.hashCode(key) : indexFor(hash(Objects.hashCode(key)));
     }
 
     private boolean checkBasketByNumber(K key, int basket) {
@@ -129,12 +124,4 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
             this.value = value;
         }
     }
-
-    public static void main(String[] args) {
-        NonCollisionMap<Integer, String> map = new NonCollisionMap<>();
-        System.out.println(map.hash(65536));
-        System.out.println(map.indexFor(8));
-    }
 }
-
-/* Специальный комментарий, чтобы можно было повторно закоммитить этот файл */
