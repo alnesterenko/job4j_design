@@ -19,7 +19,7 @@ public class LogFilter {
         try (BufferedReader input = new BufferedReader(new FileReader(file))) {
             resultList = input.lines().filter(line -> {
                 String[] tempStringArr = line.split(" ");
-                return tempStringArr.length >= 2 ? tempStringArr[tempStringArr.length - 2].equals("404") : false;
+                return tempStringArr.length >= 2 && "404".equals(tempStringArr[tempStringArr.length - 2]);
                     })
                     .toList();
         } catch (IOException e) {
