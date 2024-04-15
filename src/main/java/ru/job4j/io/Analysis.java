@@ -1,11 +1,9 @@
 package ru.job4j.io;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Analysis {
-    public void unavailable(String source, String target) {
+    public void unavailable(String source, String target) throws IOException {
         String[] startFinish = {"", ""};
         boolean[] serverOnline = {true};
         try (BufferedReader input = new BufferedReader(new FileReader(source));
@@ -27,12 +25,6 @@ public class Analysis {
                     }
                 }
             });
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-    }
-    public static void main(String[] args) {
-        Analysis analysis = new Analysis();
-        analysis.unavailable("data/server.log", "data/target.csv");
     }
 }
