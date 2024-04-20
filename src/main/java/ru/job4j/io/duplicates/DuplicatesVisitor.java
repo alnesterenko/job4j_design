@@ -13,23 +13,16 @@ import java.util.Map;
 
 public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
     private HashMap<FileProperty, HashSet<Path>> resultMap = new HashMap<>();
+
     @Override
     public FileVisitResult visitFile(Path file,
                                      BasicFileAttributes attributes) throws IOException {
         File tempFile = file.toFile();
-        if (tempFile.isFile()) {
-            FileProperty tempFileProperty = new FileProperty(tempFile.length(), tempFile.getName());
-            if (resultMap.containsKey(tempFileProperty)) {
-                HashSet tempSet = resultMap.get(tempFileProperty);
-                tempSet.add(file.toAbsolutePath());
-                resultMap.put(tempFileProperty, tempSet);
-            } else {
-                resultMap.put(tempFileProperty, new HashSet<Path>(Arrays.asList(file.toAbsolutePath())));
-            }
-        }
+        FileProperty tempFileProperty = new FileProperty(tempFile.length(), tempFile.getName());
+        resultMap.computeIfAbsent(tempFileProperty, value -> new HashSet<>()).add(file.toAbsolutePath());
         return super.visitFile(file, attributes);
     }
-    
+
     public void printDuplicates() {
         for (Map.Entry<FileProperty, HashSet<Path>> entry : resultMap.entrySet()) {
             if (entry.getValue().size() > 1) {
