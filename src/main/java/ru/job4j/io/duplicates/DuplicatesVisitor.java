@@ -18,8 +18,8 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(Path file,
                                      BasicFileAttributes attributes) throws IOException {
         File tempFile = file.toFile();
-        FileProperty tempFileProperty = new FileProperty(tempFile.length(), tempFile.getName());
-        resultMap.computeIfAbsent(tempFileProperty, value -> new HashSet<>()).add(file.toAbsolutePath());
+        resultMap.computeIfAbsent(new FileProperty(tempFile.length(), tempFile.getName()),
+                value -> new HashSet<>()).add(file.toAbsolutePath());
         return super.visitFile(file, attributes);
     }
 
