@@ -44,7 +44,7 @@ public class Zip {
         if (!arguments.get("e").matches("^\\.[a-z0-9]{2,5}$")) {
             throw new IllegalArgumentException("The extension is not in the correct format.");
         }
-        if (!arguments.get("o").matches("^[A-Za-z0-9]+\\.[a-z0-9]{2,5}$")) {
+        if (!arguments.get("o").endsWith(".zip")) {
             throw new IllegalArgumentException("The archive name must have the extension .zip");
         }
     }
