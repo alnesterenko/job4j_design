@@ -62,6 +62,10 @@ public class ArgsName {
         }
     }
 
+    public int getSize() {
+        return values.size();
+    }
+
     public static void main(String[] args) {
         ArgsName jvm = ArgsName.of(new String[] {"-Xmx=512", "-encoding=UTF-8"});
         System.out.println(jvm.get("Xmx"));
