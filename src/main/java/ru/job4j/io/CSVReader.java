@@ -10,7 +10,7 @@ public class CSVReader {
         String delimiter = argsName.get("delimiter");
         List<Integer> numbersOfColumn = getNumbersOfColumn(argsName, scanner.nextLine());
         List<String> resultList = new ArrayList<>();
-        resultList.add(argsName.get("filter").replaceAll(",", delimiter));
+        resultList.add(argsName.get("filter").replaceAll("[,;]", delimiter));
         while (scanner.hasNextLine()) {
             StringJoiner joiner = new StringJoiner(delimiter);
             List<String> tempStringList = Arrays.asList(scanner.nextLine().split(delimiter));
