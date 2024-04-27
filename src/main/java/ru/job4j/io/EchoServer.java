@@ -5,6 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
+    /**
+     * Очередная попытка победить CI-бот. Говорит что у меня где-то однострочные комментарии в коде.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         try (ServerSocket server = new ServerSocket(9000)) {
             while (!server.isClosed()) {
