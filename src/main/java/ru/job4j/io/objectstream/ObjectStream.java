@@ -4,7 +4,7 @@ import java.io.*;
 
 public class ObjectStream {
 
-    public static void main(String[] args) { // здесь сериализация и сразу же десериализация
+    public static void main(String[] args) {
         Car car = new Car("Фирма", "Модель", 2000);
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data/serialized.dat"));
              ObjectInputStream in = new ObjectInputStream(new FileInputStream("data/serialized.dat"))) {
@@ -16,7 +16,7 @@ public class ObjectStream {
         }
     }
 
-    /*public static void main(String[] args) { // здесь только сериализация
+    /*public static void main(String[] args) {
         Car car = new Car("Фирма", "Модель", 2000);
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data/serialized.dat"))) {
             out.writeObject(car);

@@ -14,11 +14,11 @@ public class RandomAccess {
             System.out.println(randomAccess.readInt());
             System.out.println(randomAccess.readChar());
             System.out.println(randomAccess.readBoolean());
-            System.out.println(randomAccess.getFilePointer()); // узнать текущее положение курсора
+            System.out.println(randomAccess.getFilePointer());
             randomAccess.seek(4);
             randomAccess.writeChar('B');
             randomAccess.seek(4);
-            randomAccess.seek(randomAccess.length()); // установка указателя(курсора) в конец записи
+            randomAccess.seek(randomAccess.length());
             System.out.println("Положение указателя после boolean: " + randomAccess.getFilePointer());
             randomAccess.writeDouble(3.01);
             randomAccess.seek(7);
