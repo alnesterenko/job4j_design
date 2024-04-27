@@ -6,25 +6,25 @@ import java.util.*;
 
 public class CSVReader {
     public static void handle(ArgsName argsName) throws Exception {
-        Scanner scanner = new Scanner(new File(argsName.get("path"))).useDelimiter(System.lineSeparator());
-        String delimiter = argsName.get("delimiter");
-        List<Integer> numbersOfColumn = getNumbersOfColumn(argsName, scanner.nextLine());
-        List<String> resultList = new ArrayList<>();
-        resultList.add(argsName.get("filter").replaceAll("[,;]", delimiter));
-        while (scanner.hasNextLine()) {
-            StringJoiner joiner = new StringJoiner(delimiter);
-            List<String> tempStringList = Arrays.asList(scanner.nextLine().split(delimiter));
-            for (Integer oneNumber : numbersOfColumn) {
-                joiner.add(tempStringList.get(oneNumber));
+        try (Scanner scanner = new Scanner(new File(argsName.get("path"))).useDelimiter(System.lineSeparator())) {
+            String delimiter = argsName.get("delimiter");
+            List<Integer> numbersOfColumn = getNumbersOfColumn(argsName, scanner.nextLine());
+            List<String> resultList = new ArrayList<>();
+            resultList.add(argsName.get("filter").replaceAll("[,;]", delimiter));
+            while (scanner.hasNextLine()) {
+                StringJoiner joiner = new StringJoiner(delimiter);
+                List<String> tempStringList = Arrays.asList(scanner.nextLine().split(delimiter));
+                for (Integer oneNumber : numbersOfColumn) {
+                    joiner.add(tempStringList.get(oneNumber));
+                }
+                resultList.add(joiner.toString());
             }
-            resultList.add(joiner.toString());
+            if ("stdout".equals(argsName.get("out"))) {
+                printResult(resultList);
+            } else {
+                saveResult(resultList, argsName.get("out"));
+            }
         }
-        if ("stdout".equals(argsName.get("out"))) {
-            printResult(resultList);
-        } else {
-            saveResult(resultList, argsName.get("out"));
-        }
-        scanner.close();
     }
 
     private static void printResult(List<String> resultList) {
