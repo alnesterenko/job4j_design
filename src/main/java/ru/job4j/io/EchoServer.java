@@ -3,6 +3,8 @@ package ru.job4j.io;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EchoServer {
 
@@ -16,12 +18,27 @@ public class EchoServer {
                     output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     String string = input.readLine();
                     System.out.println(string);
-                    if (string.contains("msg=Bye")) {
-                        server.close();
+                    String parameter = getParameter(string);
+                    switch (parameter) {
+                        case "Hello":
+                            output.write("Hello".getBytes());
+                            break;
+                        case "Exit":
+                            server.close();
+                            break;
+                        default:
+                            output.write("What".getBytes());
                     }
                     output.flush();
                 }
             }
         }
+    }
+
+    private static String getParameter(String string) {
+        Pattern pattern = Pattern.compile("=.+\s");
+        Matcher matcher = pattern.matcher(string);
+        matcher.find();
+        return matcher.group().trim().substring(1);
     }
 }
