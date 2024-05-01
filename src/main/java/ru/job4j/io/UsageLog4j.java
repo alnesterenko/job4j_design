@@ -8,10 +8,18 @@ public class UsageLog4j {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
-        LOG.trace("trace message");
-        LOG.debug("debug message");
-        LOG.info("info message");
-        LOG.warn("warn message");
-        LOG.error("error message");
+        String string = "Some string";
+        int anyDigit = 33;
+        byte smallDigit = 127;
+        short mediumDigit = 32111;
+        double pi = 3.14D;
+        float digitWithPoint = 1.27F;
+        long bigDigit = 42_327_467_246_781L;
+        char oneCharacter = 'c';
+        boolean flag = true;
+        LOG.debug(System.lineSeparator() + "Checking information output. String: {}, int: {}, byte: {}, short: {}, double: {}, "
+                        + "float: {}, long: {}, char: {}, boolean: {}.",
+                string, anyDigit, smallDigit, mediumDigit, pi, digitWithPoint, bigDigit, oneCharacter, flag);
+
     }
 }
