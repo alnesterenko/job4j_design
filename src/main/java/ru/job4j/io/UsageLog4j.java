@@ -17,9 +17,9 @@ public class UsageLog4j {
         long bigDigit = 42_327_467_246_781L;
         char oneCharacter = 'c';
         boolean flag = true;
-        LOG.debug(System.lineSeparator() + "Checking information output. String: {}, int: {}, byte: {}, short: {}, double: {}, "
-                        + "float: {}, long: {}, char: {}, boolean: {}.",
-                string, anyDigit, smallDigit, mediumDigit, pi, digitWithPoint, bigDigit, oneCharacter, flag);
+        LOG.debug("{}Checking information output. String: {}, int: {}, byte: {}, short: {}, double: {}, "
+                       + "float: {}, long: {}, char: {}, boolean: {}.",
+                System.lineSeparator(), string, anyDigit, smallDigit, mediumDigit, pi, digitWithPoint, bigDigit, oneCharacter, flag);
 
     }
 }
