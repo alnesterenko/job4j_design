@@ -50,4 +50,5 @@ public class Programmer {
                 + ", completedProjects=" + Arrays.toString(completedProjects)
                 + '}';
     }
+    /* Специальный комментарий, чтобы этот файл можно было повторно закоммитить, добавив его в коммит к XML-файлу. */
 }
