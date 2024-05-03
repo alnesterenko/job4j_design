@@ -35,6 +35,26 @@ public class Programmer {
         this.completedProjects = completedProjects;
     }
 
+    public boolean isCommercialDevelopmentExperience() {
+        return commercialDevelopmentExperience;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Experience getExperience() {
+        return experience;
+    }
+
+    public String[] getCompletedProjects() {
+        return completedProjects;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

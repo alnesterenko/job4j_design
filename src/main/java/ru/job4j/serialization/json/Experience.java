@@ -17,6 +17,13 @@ public class Experience {
         this.timeOfUsage = timeOfUsage;
     }
 
+    public String getLanguage() {
+        return language;
+    }
+
+    public int getTimeOfUsage() {
+        return timeOfUsage;
+    }
 
     @Override
     public String toString() {
