@@ -1,19 +1,30 @@
 package ru.job4j.serialization.json;
 
 import java.util.Arrays;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.annotation.*;
+import java.io.StringWriter;
 import java.util.Objects;
 
+@XmlRootElement(name = "programmer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Programmer {
+    @XmlAttribute
+    private boolean commercialDevelopmentExperience;
+    @XmlAttribute
+    private int age;
+    @XmlAttribute
+    private String name;
+    @XmlElement
+    private  Experience experience;
+    @XmlElementWrapper
+    @XmlElement(name = "completedProject")
+    private String[] completedProjects;
 
-    private final boolean commercialDevelopmentExperience;
-
-    private final int age;
-
-    private final String name;
-
-    private  final Experience experience;
-
-    private final String[] completedProjects;
+    public Programmer() {
+    }
 
     public Programmer(boolean commercialDevelopmentExperience, int age,
                       String name, Experience experience, String[] completedProjects) {
@@ -50,5 +61,20 @@ public class Programmer {
                 + ", completedProjects=" + Arrays.toString(completedProjects)
                 + '}';
     }
-    /* Специальный комментарий, чтобы этот файл можно было повторно закоммитить, добавив его в коммит к XML-файлу. */
+
+    public static void main(String[] args) throws JAXBException {
+        final Programmer programmer = new Programmer(true, 41, "Mikel Jackson",
+                new Experience("PHP", 2), new String[]{"Calories calculator", "JSON parser"});
+        JAXBContext context = JAXBContext.newInstance(Programmer.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(programmer, writer);
+            String result = writer.getBuffer().toString();
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

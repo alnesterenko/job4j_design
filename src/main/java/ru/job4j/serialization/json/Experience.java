@@ -1,10 +1,16 @@
 package ru.job4j.serialization.json;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement(name = "experience")
 public class Experience {
+    @XmlAttribute
+    private String language;
+    @XmlAttribute
+    private int timeOfUsage;
 
-    private final String language;
-
-    private final int timeOfUsage;
+    public Experience() {
+    }
 
     public Experience(String language, int timeOfUsage) {
         this.language = language;
@@ -19,5 +25,4 @@ public class Experience {
                 + ", timeOfUsage=" + timeOfUsage
                 + '}';
     }
-    /* Специальный комментарий, чтобы этот файл можно было повторно закоммитить, добавив его в коммит к XML-файлу. */
 }
