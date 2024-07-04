@@ -29,3 +29,12 @@ public class NonNullIterator implements Iterator<Integer> {
     }
 
 }
+
+/*
+* Ответ от ИИ:
+* Вы можете улучшить этот код, добавив проверку на null в конструкторе NonNullIterator,
+*  чтобы исключить возможность передачи массива с null значениями.
+*  Это поможет избежать неожиданного поведения и упростит логику методов hasNext() и next().
+
+Source: ru.job4j.iterator.NonNullIterator
+* */
