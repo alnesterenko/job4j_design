@@ -14,7 +14,6 @@ public class Config {
 
     public Config(final String path) {
         this.path = path;
-        this.load();
     }
 
     public void load() {
@@ -50,6 +49,6 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Config("data/app.properties"));
+        System.out.println(new Config("data/withoutKey.properties"));
     }
 }
