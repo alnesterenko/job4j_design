@@ -15,7 +15,7 @@ public class DirFileCache extends AbstractCache<String, String> {
     }
 
     @Override
-    public String load(String key) {
+    protected String load(String key) {
         StringJoiner stringJoiner = new StringJoiner(System.lineSeparator());
         try (Stream<String> lines = Files.lines(Paths.get(cachingDir + "/" + key))) {
             lines.forEach(stringJoiner::add);
@@ -23,7 +23,6 @@ public class DirFileCache extends AbstractCache<String, String> {
             e.printStackTrace();
         }
         String finalString = stringJoiner.toString();
-        super.put(key, finalString);
         return finalString;
     }
 }

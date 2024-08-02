@@ -19,7 +19,7 @@ public class Emulator {
             System.out.println("4. Выход");
             System.out.print("Выберите опцию: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); /* Consume newline */
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -31,7 +31,7 @@ public class Emulator {
                     System.out.print("Введите имя файла для загрузки в кэш: ");
                     String fileToLoad = scanner.nextLine();
                     if (cache != null) {
-                        cache.load(fileToLoad);
+                        cache.get(fileToLoad);
                         System.out.println("Файл загружен в кэш.");
                     } else {
                         System.out.println("Сначала укажите кэшируемую директорию.");
