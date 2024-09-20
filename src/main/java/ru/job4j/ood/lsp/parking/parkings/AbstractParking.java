@@ -7,45 +7,29 @@ import java.util.List;
 
 public abstract class AbstractParking implements Parking {
     private List<Auto> parkingForCarsList;
-    private int freeSpacesForCars;
-    private int freeSpacesForTrucks;
+    private final int parkingSpacesForCars;
+    private final int parkingSpacesForTrucks;
 
-    public AbstractParking(int freeSpacesForCars, int freeSpacesForTrucks) {
-        this.freeSpacesForCars = freeSpacesForCars;
-        this.freeSpacesForTrucks = freeSpacesForTrucks;
-        this.parkingForCarsList = new ArrayList<>(freeSpacesForCars);
+    public AbstractParking(int parkingSpacesForCars, int parkingSpacesForTrucks) {
+        this.parkingSpacesForCars = parkingSpacesForCars;
+        this.parkingSpacesForTrucks = parkingSpacesForTrucks;
+        this.parkingForCarsList = new ArrayList<>(parkingSpacesForCars);
     }
 
     /**
      * @return
      */
     @Override
-    public int getFreeSpacesForCars() {
-        return this.freeSpacesForCars;
+    public int getParkingSpacesForCars() {
+        return this.parkingSpacesForCars;
     }
 
     /**
      * @return
      */
     @Override
-    public void setFreeSpacesForCars(int newFreeSpaces) {
-        this.freeSpacesForCars = newFreeSpaces;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public int getFreeSpacesForTrucks() {
-        return this.freeSpacesForTrucks;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public void setFreeSpacesForTrucks(int newFreeSpaces) {
-        this.freeSpacesForTrucks = newFreeSpaces;
+    public int getParkingSpacesForTrucks() {
+        return this.parkingSpacesForTrucks;
     }
 
     /**
@@ -54,5 +38,15 @@ public abstract class AbstractParking implements Parking {
     @Override
     public List<Auto> getParkingCarsList() {
         return this.parkingForCarsList;
+    }
+
+    @Override
+    public int getFreeSpacesOnCarsParking() {
+        return getParkingSpacesForCars() - getParkingCarsList().size();
+    }
+
+    @Override
+    public int getFreeSpacesOnTrucksParking() {
+        return getParkingSpacesForCars() - getParkingCarsList().size();
     }
 }

@@ -1,5 +1,7 @@
 package ru.job4j.ood.lsp.parking.auto;
 
+import ru.job4j.ood.lsp.parking.tools.RandomInt;
+
 public class Truck extends AbstractAuto {
     private static final int MINSIZE = 2;
     private final int maxSize = 4;
@@ -14,7 +16,8 @@ public class Truck extends AbstractAuto {
      * @return int -- размер грузовика
      */
     private int getRandomSize(int minSize, int maxSize) {
-        return 1;
+        RandomInt randomInt = new RandomInt();
+        return randomInt.intBetween(minSize, maxSize);
     }
 
     public int getMaxSize() {

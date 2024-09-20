@@ -31,7 +31,6 @@ class CarTest {
     }
 
     @Test
-    @Disabled
     void  whenCheckUniqueNumbers() {
         Auto car = new Car();
         String firstNumber = car.getUniqueNumber();
@@ -39,4 +38,9 @@ class CarTest {
         assertThat(firstNumber).isNotEqualTo(secondNumber);
     }
 
+    @Test
+    void  whenCheckHaveCarUniqueNumbers() {
+        Auto car = new Car();
+        assertThat(car.getNumber()).isNotEqualTo("");
+    }
 }

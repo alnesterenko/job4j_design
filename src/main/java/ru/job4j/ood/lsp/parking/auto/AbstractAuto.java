@@ -1,8 +1,10 @@
 package ru.job4j.ood.lsp.parking.auto;
 
+import ru.job4j.ood.lsp.parking.tools.RandomInt;
+
 public abstract class AbstractAuto implements Auto {
     private int size = 1;
-    private String number;
+    private final String number;
 
     public AbstractAuto() {
         this.number = getUniqueNumber();
@@ -14,7 +16,15 @@ public abstract class AbstractAuto implements Auto {
      */
     @Override
     public String getUniqueNumber() {
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        RandomInt randomInt = new RandomInt();
+        for (int i = 0; i < 3; i++) {
+            stringBuilder.append(randomInt.intBetween(0, 9));
+        }
+        for (int i = 0; i < 3; i++) {
+            stringBuilder.append((char) randomInt.intBetween(97, 122));
+        }
+        return stringBuilder.toString();
     }
 
     /**
@@ -50,6 +60,6 @@ public abstract class AbstractAuto implements Auto {
      */
     @Override
     public String getNumber() {
-        return "";
+        return this.number;
     }
 }

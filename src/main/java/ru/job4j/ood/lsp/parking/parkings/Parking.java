@@ -8,12 +8,10 @@ public interface Parking {
     boolean addAuto(Auto auto);
     boolean removeAuto(Auto auto);
     boolean removeAuto(String number);
-    int getFreeSpacesForCars();
-    void setFreeSpacesForCars(int newFreeSpaces);
-    int getFreeSpacesForTrucks();
-    void setFreeSpacesForTrucks(int newFreeSpaces);
+    int getParkingSpacesForCars();
+    int getParkingSpacesForTrucks();
     List<Auto> getParkingCarsList();
     List<Auto> getParkingTrucksList();
-    /* Проверять можно ли разметить ещё машины или нет будет класс ParkingControl,
-    * поэтому тут никаких методов-проверок нет. */
+    int getFreeSpacesOnCarsParking();
+    int getFreeSpacesOnTrucksParking();
 }

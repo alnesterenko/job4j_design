@@ -1,6 +1,5 @@
 package ru.job4j.ood.lsp.parking.auto;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -26,7 +25,6 @@ class TruckTest {
     }
 
     @Test
-    @Disabled
     void  whenCheckUniqueNumbers() {
         Auto truck = new Truck();
         String firstNumber = truck.getUniqueNumber();
@@ -34,4 +32,10 @@ class TruckTest {
         assertThat(firstNumber).isNotEqualTo(secondNumber);
     }
 
+    @Test
+    void  whenCheckHaveTruckUniqueNumbersAndSizeBetween2And4() {
+        Auto truck = new Truck();
+        assertThat(truck.getNumber()).isNotEqualTo("");
+        assertThat(truck.getSize()).isGreaterThan(1).isLessThan(5);
+    }
 }

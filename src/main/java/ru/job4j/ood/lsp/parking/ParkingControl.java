@@ -11,7 +11,7 @@ public class ParkingControl {
     }
 
     public boolean addAutoToParking(Auto auto) {
-        return false;
+        return parking.addAuto(auto);
     }
 
     public boolean removeAutoFromParking(Auto auto) {
@@ -20,15 +20,6 @@ public class ParkingControl {
 
     public boolean removeAutoFromParking(String number) {
         return parking.removeAuto(number);
-    }
-
-    /**
-     * Самый главный метод в этом классе. Проверяет возможно ли поставить авто на стоянку.
-     * @param auto -- авто которое нужно добавить на стоянку
-     * @return true или false
-     */
-    public boolean checkPossibleAddAutoToParking(Auto auto) {
-        return false;
     }
 
     public Parking getParking() {
