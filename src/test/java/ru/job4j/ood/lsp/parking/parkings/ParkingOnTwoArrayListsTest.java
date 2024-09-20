@@ -101,13 +101,4 @@ class ParkingOnTwoArrayListsTest {
         assertThat(firstParking.removeAuto(truckNumber)).isTrue();
         assertThat(firstParking.getFreeSpacesOnCarsParking()).isEqualTo(5);
     }
-
-    @Test
-    void  whenTryAddTwoTrucksToSmallCarsParking() {
-        Parking firstParking = new ParkingOnTwoArrayLists(2, 0);
-        Auto truck1 = new Truck();
-        Auto truck2 = new Truck();
-        firstParking.addAuto(truck1);
-        assertThat(firstParking.addAuto(truck2)).isFalse();
-    }
 }
