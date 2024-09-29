@@ -215,16 +215,16 @@ class ControlQualityTest {
         LocalDate dateAdded = LocalDate.of(2024, 9, 10);
         controlQuality.addProducts(List.of(bread, milk, pate), dateAdded);
         LocalDate dateOfInspection = LocalDate.of(2024, 9, 10);
-        Map<String, String> tempResult = controlQuality.checkQualityOfAllProductsInStores(dateOfInspection);
+        Map<String, String> tempResult = controlQuality.resort(dateOfInspection);
         assertThat(tempResult.get("Warehouse")).isEqualTo("хлеб, молоко, паштет");
         /* Следующая проверка. Спустя 2 дня. */
         dateOfInspection = LocalDate.of(2024, 9, 12);
-        tempResult = controlQuality.checkQualityOfAllProductsInStores(dateOfInspection);
+        tempResult = controlQuality.resort(dateOfInspection);
         assertThat(tempResult.get("Warehouse")).isEqualTo("молоко, паштет");
         assertThat(tempResult.get("Shop")).isEqualTo("хлеб");
         /* Следующая проверка. Спустя 2 дня. */
         dateOfInspection = LocalDate.of(2024, 9, 14);
-        tempResult = controlQuality.checkQualityOfAllProductsInStores(dateOfInspection);
+        tempResult = controlQuality.resort(dateOfInspection);
         assertThat(tempResult.get("Warehouse")).isEqualTo("паштет");
         assertThat(tempResult.get("Shop")).isEqualTo("молоко");
         assertThat(tempResult.get("Trash")).isEqualTo("хлеб");

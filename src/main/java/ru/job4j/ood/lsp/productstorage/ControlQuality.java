@@ -68,7 +68,9 @@ public class ControlQuality {
      * @return Map<String, String> -- Мапа-отчёт, где первая String -- Название хранилища,
      * а вторая String -- список названий продуктов в этом хранилище.
      */
-    public Map<String, String> checkQualityOfAllProductsInStores(LocalDate dateOfInspection) {
+    public Map<String, String> resort(LocalDate dateOfInspection) {
+        /* Здесь заменять new LinkedHashMap<>() на абстрактную Map не буду,
+        * потому что тут важно сохранение последовательности добавления. */
         Map<String, String> result = new LinkedHashMap<>();
         if (storeList.size() > 0) {
             List<Food> tempList = new ArrayList<>();
