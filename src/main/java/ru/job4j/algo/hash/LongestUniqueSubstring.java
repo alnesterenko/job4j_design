@@ -53,9 +53,7 @@ public class LongestUniqueSubstring {
         String result = "";
         Set<Character> tempHashSet = str.chars()
                 .mapToObj(c -> (char) c)
-                .collect(
-                        Collectors.toCollection(HashSet::new)
-                );
+                .collect(Collectors.toCollection(HashSet::new));
         if (tempHashSet.size() == str.length()) {
            result = str;
         }
