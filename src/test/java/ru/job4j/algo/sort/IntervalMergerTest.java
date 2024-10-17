@@ -50,3 +50,4 @@ public class IntervalMergerTest {
         assertThat(result).isDeepEqualTo(expected);
     }
 }
+/* Этот комментарий добавлен для того, чтобы можно было повторно закомитить этот файл. */
