@@ -5,28 +5,26 @@ import java.util.*;
 public class Brackets {
 
     public boolean isValid(String s) {
-        boolean result = "".equals(s);
-        if (!result && s.length() % 2 == 0) {
-            result = true;
-            Map<String, String> bracketsVariants = new HashMap<>();
-            bracketsVariants.put("(", ")");
-            bracketsVariants.put("{", "}");
-            bracketsVariants.put("[", "]");
-            var splitArr = s.split("");
-            int lengthOfBracketArr = splitArr.length;
-            for (int i = 0; i < lengthOfBracketArr; i++) {
-                if (!bracketsVariants.containsKey(splitArr[i])) {
-                    result = false;
-                    break;
-                } else if (bracketsVariants.get(splitArr[i]).equals(splitArr[i + 1])) {
-                    i++;
-                } else if (bracketsVariants.get(splitArr[i]).equals(splitArr[splitArr.length - 1 - i])) {
-                    lengthOfBracketArr--;
-                } else {
-                    result = false;
-                    break;
-                }
-            }
+        boolean result = true;
+        if (!"".equals(s)) {
+           if (s.length() % 2 == 1) {
+               result = false;
+           } else {
+               Map<String, String> bracketsVariants = new HashMap<>();
+               bracketsVariants.put("(", ")");
+               bracketsVariants.put("{", "}");
+               bracketsVariants.put("[", "]");
+               Deque<String> stack = new ArrayDeque<>();
+               for (String oneBracket : s.split("")) {
+                   String tempBracket = bracketsVariants.get(oneBracket);
+                   if (tempBracket != null) {
+                       stack.push(tempBracket);
+                   } else if (stack.isEmpty()  || !stack.pop().equals(oneBracket)) {
+                       result = false;
+                       break;
+                   }
+               }
+           }
         }
         return result;
     }

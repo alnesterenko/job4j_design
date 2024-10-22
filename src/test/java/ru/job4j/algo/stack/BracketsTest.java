@@ -23,3 +23,4 @@ public class BracketsTest {
         assertThat(brackets.isValid("")).isTrue();
     }
 }
+/* Этот комментарий добавлен для того чтобы можно было повторно закоммитить этот файл. */
