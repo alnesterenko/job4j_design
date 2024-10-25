@@ -107,4 +107,5 @@ public class Main {
 
         System.out.println("Interval that overlaps the maximum number of intervals: [" + result[0] + ", " + result[1] + "]");
         }
+    /* Этот комментарий добавлен для того чтобы можно было повторно закоммитить этот файл. */
 }

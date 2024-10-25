@@ -61,4 +61,5 @@ public class MainTest {
         int[] result = Main.findMaxOverlapInterval(intervals);
         assertThat(result).containsExactly(-1, -1);
     }
+    /* Этот комментарий добавлен для того чтобы можно было повторно закоммитить этот файл. */
 }
