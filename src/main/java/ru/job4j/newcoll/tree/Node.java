@@ -3,6 +3,7 @@ package ru.job4j.newcoll.tree;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Node<E> {
     private E value;
@@ -37,5 +38,21 @@ public class Node<E> {
 
     public void setChildren(List<Node<E>> children) {
         this.children = children;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Node<?> node)) {
+            return false;
+        }
+        return Objects.equals(getValue(), node.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getValue());
     }
 }
