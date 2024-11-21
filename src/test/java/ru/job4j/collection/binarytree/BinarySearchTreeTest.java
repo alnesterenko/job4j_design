@@ -110,4 +110,14 @@ class BinarySearchTreeTest {
         assertThat(tree.inSymmetricalOrder()).hasSize(6)
                 .containsExactly(1, 2, 4, 5, 6, 7);
     }
+
+    @Test
+    void whenRemoveNotExistKey() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 3, 5, 7, 1}) {
+            tree.put(element);
+        }
+        assertThat(tree.contains(92)).isFalse();
+        assertThat(tree.remove(92)).isFalse();
+    }
 }

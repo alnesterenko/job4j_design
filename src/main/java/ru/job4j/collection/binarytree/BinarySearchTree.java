@@ -179,10 +179,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 heir.left = current.left;
             }
         }
-        current.key = null;
-        current.left = null;
-        current.right = null;
-        current = null;
+        if (!Objects.isNull(current)) {
+            current.key = null;
+            current.left = null;
+            current.right = null;
+            current = null;
+        }
         return result;
     }
 
