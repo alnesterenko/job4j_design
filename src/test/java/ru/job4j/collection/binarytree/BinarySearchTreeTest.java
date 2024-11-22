@@ -120,4 +120,33 @@ class BinarySearchTreeTest {
         assertThat(tree.contains(92)).isFalse();
         assertThat(tree.remove(92)).isFalse();
     }
+
+    @Test
+    void whenRemoveRoot() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 3, 5, 7, 1}) {
+            tree.put(element);
+        }
+        assertThat(tree.remove(4)).isTrue();
+        assertThat(tree.inSymmetricalOrder()).hasSize(6)
+                .containsExactly(1, 2, 3, 5, 6, 7);
+    }
+
+    @Test
+    void whenClearTree() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 3, 5, 7, 1}) {
+            tree.put(element);
+        }
+        assertThat(tree.inSymmetricalOrder()).hasSize(7)
+                .containsExactly(1, 2, 3, 4, 5, 6, 7);
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).hasSize(0)
+                .containsExactly();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        assertThat(tree.inPreOrder()).isEmpty();
+        assertThat(tree.inPostOrder()).isEmpty();
+        assertThat(tree.minimum()).isNull();
+        assertThat(tree.maximum()).isNull();
+    }
 }

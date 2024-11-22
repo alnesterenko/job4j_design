@@ -183,7 +183,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
             current.key = null;
             current.left = null;
             current.right = null;
-            current = null;
         }
         return result;
     }
@@ -212,6 +211,26 @@ public class BinarySearchTree<T extends Comparable<T>> {
             node.right = delNode.right;
         }
         return node;
+    }
+
+    public void clear() {
+        Node node = root;
+        clear(node);
+        root = null;
+    }
+
+    private void clear(Node first) {
+        if (first != null) {
+            if (first.left != null) {
+                clear(first.left);
+            }
+            if (first.right != null) {
+                clear(first.right);
+            }
+            first.left = null;
+            first.right = null;
+            first.key = null;
+        }
     }
 
     private class Node implements VisualNode {
