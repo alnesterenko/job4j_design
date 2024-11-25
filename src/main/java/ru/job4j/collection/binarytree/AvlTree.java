@@ -1,15 +1,32 @@
 package ru.job4j.collection.binarytree;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class AvlTree<T extends Comparable<T>> {
 
-    public Node root;
+    private Node root;
 
-    public boolean contains(T value) {
-        //TODO реализуйте метод
-        return false;
+    public boolean contains(Node node, T value) {
+        return find(node, value) != null;
+    }
+
+    private Node find(Node node, T key) {
+        Node result = null;
+        if (node != null) {
+            if (node.getText().equals(key.toString())) {
+                result = node;
+            } else {
+                int comparingResult = node.key.compareTo(key);
+                if (comparingResult < 0) {
+                    result = find(node.right, key);
+                } else {
+                    result = find(node.left, key);
+                }
+            }
+        }
+        return result;
     }
 
     public boolean insert(T value) {
@@ -111,38 +128,98 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     private Node leftRotation(Node node) {
-        //TODO реализуйте метод
-        return null;
+        Node newParent = node.right;
+        node.right = newParent.left;
+        newParent.left = node;
+        updateHeight(node);
+        updateHeight(newParent);
+        return newParent;
     }
 
     private Node rightRotation(Node node) {
-        //TODO реализуйте метод
-        return null;
+        Node newParent = node.left;
+        node.left = newParent.right;
+        newParent.right = node;
+        updateHeight(node);
+        updateHeight(newParent);
+        return newParent;
     }
 
     public T minimum() {
-        //TODO реализуйте метод
-        return null;
+        return Objects.nonNull(root) ? minimum(root).key : null;
+    }
+
+    private Node minimum(Node node) {
+        Node result;
+        if (node.left == null) {
+            result = node;
+        } else {
+            result = minimum(node.left);
+        }
+        return result;
     }
 
     public T maximum() {
-        //TODO реализуйте метод
-        return null;
+        return Objects.nonNull(root) ? maximum(root).key : null;
+    }
+
+    private Node maximum(Node node) {
+        Node result;
+        if (node.right == null) {
+            result = node;
+        } else {
+            result = maximum(node.right);
+        }
+        return result;
     }
 
     public List<T> inSymmetricalOrder() {
-        //TODO реализуйте метод
-        return null;
+        List<T> result = new ArrayList<>();
+        Node node = root;
+        return inSymmetricalOrder(node, result);
+    }
+
+    private List<T> inSymmetricalOrder(Node localRoot, List<T> list) {
+        if (localRoot != null) {
+            inSymmetricalOrder(localRoot.left, list);
+            list.add(localRoot.key);
+            inSymmetricalOrder(localRoot.right, list);
+        }
+        return list;
     }
 
     public List<T> inPreOrder() {
-        //TODO реализуйте метод
-        return null;
+        List<T> result = new ArrayList<>();
+        Node node = root;
+        return inPreOrder(node, result);
+    }
+
+    private List<T> inPreOrder(Node localRoot, List<T> list) {
+        if (localRoot != null) {
+            list.add(localRoot.key);
+            inPreOrder(localRoot.left, list);
+            inPreOrder(localRoot.right, list);
+        }
+        return list;
     }
 
     public List<T> inPostOrder() {
-        //TODO реализуйте метод
-        return null;
+        List<T> result = new ArrayList<>();
+        Node node = root;
+        return inPostOrder(node, result);
+    }
+
+    private List<T> inPostOrder(Node localRoot, List<T> list) {
+        if (localRoot != null) {
+            inPostOrder(localRoot.left, list);
+            inPostOrder(localRoot.right, list);
+            list.add(localRoot.key);
+        }
+        return list;
+    }
+
+    public Node getRoot() {
+        return root;
     }
 
     @Override
