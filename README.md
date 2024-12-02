@@ -1,6 +1,7 @@
 ## This is a Junior level educational project.<br/>
 ### Here are some topics that will be covered in the course:
 #### "Объединение зафиксированных измененИй"
+###### Хотя может быть и нет.
 
 - 2.1.1. AssertJ
 - 2.1.2. Iterator
