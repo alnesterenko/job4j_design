@@ -1,8 +1,5 @@
 package ru.job4j.algo.exam;
 
-import ru.job4j.collection.SimpleQueue;
-import ru.job4j.newcoll.tree.Node;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
